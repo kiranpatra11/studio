@@ -2,10 +2,12 @@
 
 import WaitlistForm from '@/components/waitlist-form';
 import { Spotlight } from '@/components/ui/spotlight';
+import { AnimatedBackground } from '@/components/ui/open-ai-codex-animated-background';
 
 export default function Hero() {
   return (
     <section className="relative grid min-h-dvh w-full items-center overflow-hidden bg-black py-24">
+      <AnimatedBackground />
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
         fill="hsl(var(--primary))"
