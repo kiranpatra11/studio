@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 
-// Dynamically import Spline (client-only to avoid hydration errors)
+// Prevents server-side rendering
 const Spline = dynamic(() => import('@splinetool/react-spline'), { ssr: false })
 
 interface SplineSceneProps {
@@ -15,17 +15,12 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
   return (
     <Suspense
       fallback={
-        <div className="w-full h-full flex items-center justify-center">
-          <div className="h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
-            <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
-          </div>
+        <div className="w-full h-full flex items-center justify-center text-white">
+          Loading 3D...
         </div>
       }
     >
-      <Spline
-        scene={scene}
-        className={className}
-      />
+      <Spline scene={scene} className={className} />
     </Suspense>
   )
 }

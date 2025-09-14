@@ -2,6 +2,7 @@
 
 import WaitlistForm from '@/components/waitlist-form';
 import { Spotlight } from '@/components/ui/spotlight';
+import SplineWrapper from "@/components/ui/splinewrapper";
 
 export default function Hero() {
   return (
@@ -27,8 +28,8 @@ export default function Hero() {
             <WaitlistForm />
           </div>
         </div>
-        <div className="hidden md:block">
-          {/* Placeholder for the large 3D element */}
+        <div className="h-[500px]">
+          <SplineWrapper scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" />
         </div>
       </div>
     </section>
