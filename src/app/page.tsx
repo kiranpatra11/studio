@@ -1,31 +1,30 @@
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
-import { AnimatedBackground } from '@/components/ui/open-ai-codex-animated-background';
-import Features from '@/components/sections/features';
-import ProductPreview from '@/components/sections/product-preview';
-import { Separator } from '@/components/ui/separator';
+import WaitlistForm from '@/components/waitlist-form';
 
 export default function Home() {
   return (
-    <div className="flex min-h-dvh flex-col bg-black">
-      <div className="relative h-screen flex flex-col justify-center items-center">
+    <div className="flex min-h-dvh flex-col bg-background">
+      <div className="relative isolate flex h-dvh flex-col items-center justify-center overflow-hidden">
+        <div className="bg-gradient-radial-hero absolute inset-0 -z-10" />
         <Header />
-        <AnimatedBackground />
-        <div className="relative z-10 text-center px-4">
-          <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
-            Stalliq Waitlist Spark
+        <main className="flex flex-1 flex-col items-center justify-center px-4 text-center">
+          <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground md:text-7xl">
+            <span className="text-glow bg-gradient-to-r from-primary via-accent-magenta to-accent bg-clip-text text-transparent">
+              AI-Powered
+            </span>
+            <br />
+            Innovation Starts Here.
           </h1>
-          <p className="mt-4 text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto">
-            Join the waitlist for the future of innovation.
+          <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+            Stalliq is your new launchpad for creating, testing, and deploying
+            next-generation ideas. Get early access and be part of the future.
           </p>
-        </div>
+          <div className="mt-8 w-full max-w-lg">
+            <WaitlistForm />
+          </div>
+        </main>
       </div>
-      <main className="flex-grow bg-black">
-        <Separator className="my-16 md:my-24" />
-        <Features />
-        <Separator className="my-16 md:my-24" />
-        <ProductPreview />
-      </main>
       <Footer />
     </div>
   );
