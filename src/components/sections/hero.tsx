@@ -19,11 +19,10 @@ export default function Hero() {
           {/* Left Column: Text Content */}
           <div className="flex flex-col items-center justify-center p-8 text-center md:col-span-2 md:items-start md:pl-16 md:text-left">
             <h1 className="text-5xl font-bold text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text md:text-7xl">
-              Interactive 3D
+              Stop Losing $5K Per Month on Customer Support
             </h1>
             <p className="mx-auto mt-4 max-w-lg text-neutral-300 md:mx-0 md:text-lg">
-              Bring your UI to life with beautiful 3D scenes. Create immersive
-              experiences that capture attention and enhance your design.
+              Our AI-powered solution resolves 80% of queries automatically, saving you time and money while delighting your customers.
             </p>
           </div>
 
