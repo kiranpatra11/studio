@@ -15,13 +15,13 @@ export default function Hero() {
           />
         </div>
 
-        <div className="relative z-10 grid h-full w-full items-center md:grid-cols-2">
+        <div className="relative z-10 grid h-full w-full items-center md:grid-cols-5">
           {/* Left Column: Text Content */}
-          <div className="flex flex-col items-center justify-center p-8 text-center md:items-start md:text-left">
-            <h1 className="text-4xl font-bold text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text md:text-5xl">
+          <div className="flex flex-col items-center justify-center p-8 text-center md:col-span-2 md:items-start md:pl-16 md:text-left">
+            <h1 className="text-5xl font-bold text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text md:text-7xl">
               Interactive 3D
             </h1>
-            <p className="mx-auto mt-4 max-w-lg text-neutral-300 md:mx-0">
+            <p className="mx-auto mt-4 max-w-lg text-neutral-300 md:mx-0 md:text-lg">
               Bring your UI to life with beautiful 3D scenes. Create immersive
               experiences that capture attention and enhance your design.
             </p>
@@ -29,7 +29,7 @@ export default function Hero() {
 
           {/* Right Column: Robot */}
           <div
-            className="relative h-full w-full"
+            className="relative h-full w-full md:col-span-3"
             style={{ width: '110%', marginLeft: '-5%', overflow: 'visible' }}
           >
             <SplineScene
