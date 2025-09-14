@@ -18,8 +18,9 @@ export default function Hero() {
         <div className="relative z-10 grid h-full w-full items-center md:grid-cols-5">
           {/* Left Column: Text Content */}
           <div className="flex flex-col items-center justify-center p-8 text-center md:col-span-2 md:items-start md:pl-16 md:text-left">
-            <h1 className="text-5xl font-bold text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text md:text-7xl">
-              Stop Losing $5K Per Month on Customer Support
+            <h1 className="text-5xl font-extrabold tracking-tighter text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text md:text-7xl leading-[0.9]">
+              Stop Losing $5K Per Month
+              <span className="block font-bold text-4xl md:text-6xl tracking-tight leading-[1.1]">on Customer Support</span>
             </h1>
             <p className="mx-auto mt-4 max-w-lg text-neutral-300 md:mx-0 md:text-lg">
               Our AI-powered solution resolves 80% of queries automatically, saving you time and money while delighting your customers.
