@@ -36,9 +36,9 @@ export function SplineSceneBasic() {
         fill="white"
       />
       
-      <div className="flex h-full">
-        {/* Left content */}
-        <div className="flex-1 p-8 relative z-10 flex flex-col justify-center">
+      <div className="flex flex-col h-full">
+        {/* Top content */}
+        <div className="p-8 relative z-10 flex flex-col items-center text-center">
           <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
             Interactive 3D
           </h1>
@@ -48,7 +48,7 @@ export function SplineSceneBasic() {
           </p>
         </div>
 
-        {/* Right content */}
+        {/* Bottom content */}
         <div className="flex-1 relative">
           <SplineScene 
             scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
