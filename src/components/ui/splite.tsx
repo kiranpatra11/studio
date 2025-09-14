@@ -30,20 +30,13 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
 
 export function SplineSceneBasic() {
   return (
-    <Card className="w-full h-full bg-black/[0.96] relative flex items-center justify-center overflow-hidden">
+    <Card className="w-full h-full bg-black/[0.96] relative flex overflow-hidden">
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
         fill="white"
       />
       
-      <div className="absolute inset-0 z-10">
-        <SplineScene 
-          scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-          className="w-full h-full"
-        />
-      </div>
-      
-      <div className="p-8 relative z-20 flex flex-col items-center justify-center text-center">
+      <div className="w-1/2 p-8 relative z-20 flex flex-col items-start justify-center text-left">
         <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
           Interactive 3D
         </h1>
@@ -51,6 +44,13 @@ export function SplineSceneBasic() {
           Bring your UI to life with beautiful 3D scenes. Create immersive experiences 
           that capture attention and enhance your design.
         </p>
+      </div>
+
+      <div className="w-1/2 h-full relative z-10">
+        <SplineScene 
+          scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+          className="w-full h-full"
+        />
       </div>
     </Card>
   )
