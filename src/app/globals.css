@@ -99,4 +99,18 @@
   .bg-gradient-radial-features {
     background-image: radial-gradient(circle at 50% 50%, hsl(var(--accent-purple)/0.1), transparent 50%);
   }
+
+  .background-lighting {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at 70% 50%, 
+                rgba(26, 26, 46, 0.8) 0%, 
+                rgba(22, 33, 62, 0.6) 30%, 
+                rgba(15, 52, 96, 0.4) 50%, 
+                transparent 70%);
+    z-index: -1;
+  }
 }
