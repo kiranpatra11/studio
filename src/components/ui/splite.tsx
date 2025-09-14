@@ -31,10 +31,7 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
 export function SplineSceneBasic() {
   return (
     <Card className="w-full h-full bg-black/[0.96] relative flex overflow-hidden">
-      <Spotlight
-        className="-top-40 left-0 md:left-60 md:-top-20"
-        fill="white"
-      />
+      <Spotlight />
       
       <div className="flex-shrink-0 w-[55%] p-8 relative z-20 flex flex-col items-start justify-center text-left">
         <h1 className="text-6xl md:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
