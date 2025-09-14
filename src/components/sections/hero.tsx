@@ -13,20 +13,20 @@ export default function Hero() {
           fill="white"
         />
         
-        <div className="flex h-full">
-          {/* Left content */}
-          <div className="flex-1 p-8 relative z-10 flex flex-col justify-center">
+        <div className="flex h-full items-center justify-center text-center">
+          {/* Centered content */}
+          <div className="relative z-10">
             <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
               Interactive 3D
             </h1>
-            <p className="mt-4 text-neutral-300 max-w-lg">
+            <p className="mt-4 text-neutral-300 max-w-lg mx-auto">
               Bring your UI to life with beautiful 3D scenes. Create immersive experiences 
               that capture attention and enhance your design.
             </p>
           </div>
 
-          {/* Right content */}
-          <div className="flex-1 relative">
+          {/* Spline scene */}
+          <div className="absolute inset-0 z-0">
             <SplineScene 
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
               className="w-full h-full"
