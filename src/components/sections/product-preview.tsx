@@ -4,6 +4,7 @@ import { ScrollReveal } from '@/components/ui/scroll-reveal';
 import { cn } from '@/lib/utils';
 import { Button } from '../ui/button';
 import Link from 'next/link';
+import { ButtonCta } from '../ui/button-shiny';
 
 export default function ProductPreview() {
   const imageData = data.placeholderImages.find(
@@ -48,9 +49,9 @@ export default function ProductPreview() {
                 'absolute inset-0 flex items-center justify-center bg-background/70 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100'
               )}
             >
-                <Button size="lg" asChild className="animate-pulse-glow">
-                    <Link href="#waitlist-form">Get Early Access</Link>
-                </Button>
+                <Link href="#waitlist-form">
+                  <ButtonCta label="Get Early Access" className="w-full" />
+                </Link>
             </div>
           </div>
         </ScrollReveal>

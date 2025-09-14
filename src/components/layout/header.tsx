@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { MenuBar } from '@/components/ui/glow-menu';
 import { useState } from 'react';
 import { LayoutGrid, DollarSign, HelpCircle, Mail } from 'lucide-react';
+import { ButtonCta } from '../ui/button-shiny';
 
 const menuItems = [
   {
@@ -55,9 +56,9 @@ export default function Header() {
           <MenuBar items={menuItems} activeItem={activeItem} onItemClick={setActiveItem} />
         </div>
         <div className="flex items-center gap-4">
-          <Button asChild className="animate-pulse-glow">
-            <Link href="#waitlist-form">Join Waitlist</Link>
-          </Button>
+          <Link href="#waitlist-form">
+            <ButtonCta label="Join Waitlist" className="w-full" />
+          </Link>
         </div>
       </div>
     </header>

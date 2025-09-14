@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { joinWaitlist } from '@/app/actions';
+import { ButtonCta } from './ui/button-shiny';
 
 const emailSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email." }),
@@ -21,25 +22,13 @@ type FormData = z.infer<typeof emailSchema>;
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <Button
+    <ButtonCta
       type="submit"
-      size="lg"
-      className="w-full sm:w-auto animate-pulse-glow"
+      className="w-full sm:w-auto"
       disabled={pending}
       aria-label="Join the waitlist"
-    >
-      {pending ? (
-        <>
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          Joining...
-        </>
-      ) : (
-        <>
-          Get Early Access
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </>
-      )}
-    </Button>
+      label={pending ? 'Joining...' : 'Get Early Access'}
+    />
   );
 }
 
