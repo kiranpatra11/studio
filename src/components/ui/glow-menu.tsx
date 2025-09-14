@@ -82,6 +82,7 @@ export const MenuBar = React.forwardRef<
       whileHover="hover"
       {...props}
     >
+      {mounted && (
       <motion.div
         className={cn(
           "absolute -inset-2 bg-gradient-radial from-transparent to-transparent rounded-3xl z-0 pointer-events-none",
@@ -92,6 +93,7 @@ export const MenuBar = React.forwardRef<
         variants={navGlowVariants}
         style={{ opacity: mounted ? 1 : 0 }}
       />
+      )}
       <ul className="flex items-center gap-1 relative z-10">
         {items.map((item) => {
           const Icon = item.icon
