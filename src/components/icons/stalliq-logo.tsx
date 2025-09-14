@@ -2,23 +2,17 @@ import { cn } from "@/lib/utils"
 
 export function StalliqLogo({ className }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 140 40"
-      xmlns="http://www.w3.org/2000/svg"
-      className={cn("text-foreground", className)}
-      aria-label="Stalliq Logo"
-    >
-      <defs>
-        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style={{ stopColor: 'hsl(var(--primary))' }} />
-          <stop offset="100%" style={{ stopColor: 'hsl(var(--accent-magenta))' }} />
-        </linearGradient>
-      </defs>
-      <g fontFamily='"Space Grotesk", sans-serif' fontWeight="700" fontSize="32">
-        <text x="0" y="30" fill="url(#logoGradient)">
-          Stalliq
-        </text>
-      </g>
-    </svg>
+    <div className={cn("flex items-center gap-2", className)}>
+      <svg
+        viewBox="0 0 512 512"
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-8 w-8"
+        fill="white"
+        aria-label="Stalliq Icon"
+      >
+          <path d="M438.344,213.375,306.469,27.188c-12.875-18.062-39.062-18.062-51.938,0L122.656,213.375c-12.875,18.062,0,40.125,20.062,40.125h60.188c12.5,0,23.312,7.812,27.688,19.375C227,262.188,171.594,295.438,171.594,360c0,57,70.625,103.125,157.688,103.125S486.969,417,486.969,360c0-64.562-55.406-97.812-59.031-104.75,3.625-7.312,1.375-16.312-5.75-22.312-7.125-6-16.812-7.438-25.5-3.562l-68.5,30.312c-15.625,6.938-34,1.312-44.438-11.688-10.438-13-9.188-31.562,3-43.062l68.5-63.5c8.625-8,21.5-9.625,31.875-4.125,10.375,5.5,16.625,16.312,16.625,27.938v19.125c0,22.125,17.938,40.062,40.062,40.062h60.188C438.344,253.5,451.219,231.438,438.344,213.375ZM329.281,423.125c-53.312,0-97.562-27.188-97.562-63.125s44.25-63.125,97.562-63.125,97.562,27.188,97.562,63.125S382.594,423.125,329.281,423.125Z" transform="scale(1, -1) translate(0, -512)"/>
+      </svg>
+      <span className="font-headline text-2xl font-bold text-white">Stalliq</span>
+    </div>
   );
 }
