@@ -83,11 +83,12 @@ export const MenuBar = React.forwardRef<
       {...props}
     >
       <motion.div
-        className={`absolute -inset-2 bg-gradient-radial from-transparent ${
+        className={cn(
+          "absolute -inset-2 bg-gradient-radial from-transparent to-transparent rounded-3xl z-0 pointer-events-none",
           isDarkTheme
             ? "via-blue-400/30 via-30% via-purple-400/30 via-60% via-red-400/30 via-90%"
             : "via-blue-400/20 via-30% via-purple-400/20 via-60% via-red-400/20 via-90%"
-        } to-transparent rounded-3xl z-0 pointer-events-none`}
+        )}
         variants={navGlowVariants}
         style={{ opacity: mounted ? (isDarkTheme ? 1 : 0.5) : 0 }}
       />
