@@ -1,3 +1,10 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "product-preview",
+      "description": "A preview of the Stalliq application interface, showing a sleek dark mode dashboard.",
+      "imageUrl": "https://picsum.photos/seed/stalliq/1200/800",
+      "imageHint": "dashboard ui"
+    }
+  ]
 }
