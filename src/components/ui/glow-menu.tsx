@@ -90,7 +90,7 @@ export const MenuBar = React.forwardRef<
             : "via-blue-400/20 via-30% via-purple-400/20 via-60% via-red-400/20 via-90%"
         )}
         variants={navGlowVariants}
-        style={{ opacity: mounted ? (isDarkTheme ? 1 : 0.5) : 0 }}
+        style={{ opacity: mounted ? 1 : 0 }}
       />
       <ul className="flex items-center gap-1 relative z-10">
         {items.map((item) => {
