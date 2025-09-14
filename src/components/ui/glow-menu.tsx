@@ -62,8 +62,14 @@ export const MenuBar = React.forwardRef<
     onItemClick?: (label: string) => void
   }
 >(({ className, items, activeItem, onItemClick, ...props }, ref) => {
-  const { theme } = useTheme()
-  const isDarkTheme = theme === "dark"
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false);
+  const isDarkTheme = resolvedTheme === "dark"
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
 
   return (
     <motion.nav
@@ -83,6 +89,7 @@ export const MenuBar = React.forwardRef<
             : "via-blue-400/20 via-30% via-purple-400/20 via-60% via-red-400/20 via-90%"
         } to-transparent rounded-3xl z-0 pointer-events-none`}
         variants={navGlowVariants}
+        style={{ opacity: mounted ? (isDarkTheme ? 1 : 0.5) : 0 }}
       />
       <ul className="flex items-center gap-1 relative z-10">
         {items.map((item) => {
