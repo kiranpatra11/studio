@@ -19,10 +19,10 @@ export default function Hero() {
           {/* Left Column: Text Content */}
           <div className="flex flex-col items-center justify-center p-8 text-center md:col-span-2 md:items-start md:pl-16 md:text-left">
             <h1 className="text-5xl font-extrabold tracking-tighter text-white md:text-7xl leading-[0.9]">
-              Stop Losing <span className="text-primary">$5K Per Month</span>
+              Stop Losing <span className="text-primary text-glow">$5K Per Month</span>
               <span className="block font-bold text-4xl md:text-6xl tracking-tight text-neutral-400 leading-[1.1]">on Customer Support</span>
             </h1>
-            <p className="mx-auto mt-4 max-w-lg text-neutral-300 md:mx-0 md:text-lg">
+            <p className="mx-auto mt-8 max-w-[500px] text-base md:text-lg text-neutral-400 md:mx-0" style={{ lineHeight: 1.6 }}>
               Our AI-powered solution resolves 80% of queries automatically, saving you time and money while delighting your customers.
             </p>
           </div>
