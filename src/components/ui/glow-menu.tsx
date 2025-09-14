@@ -7,11 +7,11 @@ import { cn } from "@/lib/utils"
 import { type LucideIcon } from "lucide-react"
 
 interface MenuItem {
-  icon?: LucideIcon | React.FC
+  icon: LucideIcon | React.FC
   label: string
   href: string
   gradient: string
-  iconColor?: string
+  iconColor: string
 }
 
 interface MenuBarProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -75,8 +75,8 @@ export const MenuBar = React.forwardRef<HTMLDivElement, MenuBarProps>(
       <motion.nav
         ref={ref}
         className={cn(
-          "p-1 relative",
-          className
+          "p-2 rounded-2xl bg-gradient-to-b from-background/80 to-background/40 backdrop-blur-lg border border-border/40 shadow-lg relative overflow-hidden",
+          className,
         )}
         initial="initial"
         whileHover="hover"
@@ -94,7 +94,7 @@ export const MenuBar = React.forwardRef<HTMLDivElement, MenuBarProps>(
           style={{ opacity: mounted ? 1 : 0 }}
         />
         )}
-        <ul className="flex items-center gap-1 relative z-10">
+        <ul className="flex items-center gap-2 relative z-10">
           {items.map((item) => {
             const Icon = item.icon
             const isActive = item.label === activeItem
