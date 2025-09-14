@@ -12,7 +12,7 @@ function ButtonCta({ label = "Get Access", className, ...props }: ButtonCtaProps
         <Button
             variant="ghost"
             className={cn(
-                "group relative h-12 px-4 rounded-lg overflow-hidden transition-all duration-500",
+                "group relative h-12 px-6 rounded-lg overflow-hidden transition-all duration-500",
                 className
             )}
             {...props}
@@ -30,7 +30,7 @@ function ButtonCta({ label = "Get Access", className, ...props }: ButtonCtaProps
             <div className="absolute inset-[2px] shadow-[inset_0_0_15px_rgba(199,135,246,0.15)] rounded-lg" />
 
             <div className="relative flex items-center justify-center gap-2">
-                <span className="text-lg font-light bg-gradient-to-b from-[#D69DDE] to-[#B873F8] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(199,135,246,0.4)] tracking-tighter">
+                <span className="text-lg font-light bg-gradient-to-b from-[#D69DDE] to-[#B873F8] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(199,135,246,0.4)] tracking-tighter whitespace-nowrap">
                     {label}
                 </span>
             </div>
