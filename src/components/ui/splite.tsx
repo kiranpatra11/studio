@@ -49,7 +49,7 @@ export function SplineSceneBasic() {
       <div className="w-1/2 h-full relative z-10">
         <SplineScene 
           scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-          className="w-full h-full"
+          className="!w-[125%] !h-full !ml-[-12.5%]"
         />
       </div>
     </Card>
