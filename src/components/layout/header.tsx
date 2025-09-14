@@ -57,7 +57,7 @@ export default function Header() {
         </div>
         <div className="flex items-center gap-4">
           <Link href="#waitlist-form">
-            <ButtonCta label="Join Waitlist" className="w-full" />
+            <ButtonCta label="Join Waitlist" className="w-auto" />
           </Link>
         </div>
       </div>

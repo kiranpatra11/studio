@@ -12,7 +12,7 @@ function ButtonCta({ label = "Get Access", className, ...props }: ButtonCtaProps
         <Button
             variant="ghost"
             className={cn(
-                "group relative w-1/2 h-12 px-4 rounded-lg overflow-hidden transition-all duration-500",
+                "group relative h-12 px-4 rounded-lg overflow-hidden transition-all duration-500",
                 className
             )}
             {...props}
