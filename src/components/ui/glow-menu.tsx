@@ -91,7 +91,7 @@ export const MenuBar = React.forwardRef<HTMLDivElement, MenuBarProps>(
               : "via-blue-400/20 via-30% via-purple-400/20 via-60% via-red-400/20 via-90%"
           )}
           variants={navGlowVariants}
-          style={{ opacity: mounted ? 1 : 0 }}
+          style={{ opacity: mounted ? undefined : 0 }}
         />
         )}
         <ul className="flex items-center gap-2 relative z-10">
