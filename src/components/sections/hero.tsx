@@ -17,7 +17,7 @@ export default async function Hero() {
   }
 
   return (
-    <section className="relative flex min-h-dvh items-center justify-center overflow-hidden py-24 text-center">
+    <section className="relative flex min-h-dvh items-center justify-center overflow-hidden bg-black py-24 text-center">
       <div className="absolute inset-0 -z-20">
         {animationDataUri ? (
           <div
