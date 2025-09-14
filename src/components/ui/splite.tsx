@@ -36,20 +36,20 @@ export function SplineSceneBasic() {
         fill="white"
       />
       
-      <div className="w-1/2 p-8 relative z-20 flex flex-col items-start justify-center text-left">
-        <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
+      <div className="w-7/12 p-8 relative z-20 flex flex-col items-start justify-center text-left">
+        <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
           Interactive 3D
         </h1>
-        <p className="mt-4 text-neutral-300 max-w-lg">
+        <p className="mt-4 text-lg text-neutral-300 max-w-lg">
           Bring your UI to life with beautiful 3D scenes. Create immersive experiences 
           that capture attention and enhance your design.
         </p>
       </div>
 
-      <div className="w-1/2 h-full relative z-10">
+      <div className="w-5/12 h-full relative z-10">
         <SplineScene 
           scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-          className="!w-[125%] !h-full !ml-[-12.5%]"
+          className="!w-[160%] !h-full !ml-[-30%]"
         />
       </div>
     </Card>
