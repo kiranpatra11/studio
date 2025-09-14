@@ -74,13 +74,13 @@ export default function WaitlistForm() {
       action={formAction}
       className="space-y-4"
     >
-      <div className="flex w-full flex-col gap-2 sm:flex-row">
+      <div className="flex w-full flex-col items-center gap-2 sm:flex-row">
         <div className="relative w-full">
           <Input
             {...register('email')}
             type="email"
             placeholder="Enter your email"
-            className="h-14 w-full text-lg sm:h-auto"
+            className="h-12 w-full text-lg sm:h-auto sm:text-base"
             aria-invalid={!!combinedError}
             aria-describedby="email-error"
           />
