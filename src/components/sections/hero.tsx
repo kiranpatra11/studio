@@ -30,6 +30,7 @@ export default function Hero() {
           {/* Right Column: Robot */}
           <div
             className="relative h-full w-full"
+            style={{ width: '110%', marginLeft: '-5%', overflow: 'visible' }}
           >
             <SplineScene
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
