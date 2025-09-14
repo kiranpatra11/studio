@@ -1,20 +1,18 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState, useEffect, useRef } from 'react';
+import { useFormStatus } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useEffect, useRef } from 'react';
 
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { joinWaitlist } from '@/app/actions';
 import { ButtonCta } from './ui/button-shiny';
 
 const emailSchema = z.object({
-  email: z.string().email({ message: "Please enter a valid email." }),
+  email: z.string().email({ message: 'Please enter a valid email.' }),
 });
 
 type FormData = z.infer<typeof emailSchema>;
@@ -33,7 +31,7 @@ function SubmitButton() {
 }
 
 export default function WaitlistForm() {
-  const [state, formAction] = useFormState(joinWaitlist, {
+  const [state, formAction] = useActionState(joinWaitlist, {
     error: null,
     message: null,
   });
@@ -45,14 +43,14 @@ export default function WaitlistForm() {
   } = useForm<FormData>({
     resolver: zodResolver(emailSchema),
   });
-  
+
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     if (state.message) {
       toast({
-        title: "Success!",
+        title: 'Success!',
         description: state.message,
       });
       formRef.current?.reset();
@@ -61,12 +59,12 @@ export default function WaitlistForm() {
     if (state.error) {
       toast({
         variant: 'destructive',
-        title: "Oops!",
+        title: 'Oops!',
         description: state.error,
       });
     }
   }, [state, toast, reset]);
-  
+
   const combinedError = errors.email?.message || state.error;
 
   return (
