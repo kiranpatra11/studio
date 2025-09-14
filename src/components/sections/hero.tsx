@@ -24,7 +24,7 @@ export default function Hero() {
               experiences that capture attention and enhance your design.
             </p>
           </div>
-          <div className="robot-container relative z-15 h-full w-full">
+          <div className="robot-container relative z-15 h-full w-full -mr-8">
             <SplineScene
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
               className="h-full w-full"
