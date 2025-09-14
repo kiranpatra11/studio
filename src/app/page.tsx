@@ -1,5 +1,5 @@
 import Header from '@/components/layout/header';
-import { SplineSceneBasic } from '@/components/ui/splite';
+import { SplineSceneBasic } from '@/components/ui/spline';
 
 export default function Home() {
   return (
