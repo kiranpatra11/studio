@@ -3,7 +3,7 @@
 import { SplineScene } from '@/components/ui/splite';
 import { Card } from '@/components/ui/card';
 import { Spotlight } from '@/components/ui/spotlight';
-import { Button } from '../ui/button';
+import { RainbowButton } from '../ui/rainbow-button';
 
 export default function Hero() {
   return (
@@ -27,17 +27,16 @@ export default function Hero() {
               Our AI-powered solution resolves 80% of queries automatically, saving you time and money while delighting your customers.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center gap-4">
-              <Button
-                className="w-full sm:w-auto rounded-xl bg-gradient-to-r from-primary to-[#1a9b94] px-8 py-4 text-lg font-semibold text-white shadow-[0_8px_24px_rgba(44,204,195,0.4)] transition-transform hover:translate-y-[-2px]"
+              <RainbowButton
+                className="w-full sm:w-auto"
               >
                 Get Early Access - FREE
-              </Button>
-              <Button
-                variant="outline"
-                className="w-full sm:w-auto rounded-xl border-2 border-neutral-700 bg-transparent px-7 py-4 text-lg font-medium text-white transition-colors hover:border-primary hover:text-white"
+              </RainbowButton>
+              <RainbowButton
+                className="w-full sm:w-auto"
               >
                 Watch Demo →
-              </Button>
+              </RainbowButton>
             </div>
           </div>
 
