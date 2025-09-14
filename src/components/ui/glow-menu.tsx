@@ -64,12 +64,12 @@ export const MenuBar = React.forwardRef<
 >(({ className, items, activeItem, onItemClick, ...props }, ref) => {
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false);
-  const isDarkTheme = resolvedTheme === "dark"
 
   React.useEffect(() => {
     setMounted(true);
   }, []);
 
+  const isDarkTheme = resolvedTheme === "dark"
 
   return (
     <motion.nav
