@@ -32,7 +32,7 @@ export function SplineSceneBasic() {
   return (
     <Card className="w-full h-full bg-black/[0.96] relative flex overflow-hidden">
       <Spotlight
-        className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
+        className="-top-40 left-0 md:left-60 md:-top-20"
         fill="white"
       />
       <div className="flex-shrink-0 w-[55%] p-8 relative z-20 flex flex-col items-start justify-center text-left">
