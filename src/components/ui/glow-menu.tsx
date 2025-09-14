@@ -14,6 +14,12 @@ interface MenuItem {
   iconColor?: string
 }
 
+interface MenuBarProps extends React.HTMLAttributes<HTMLDivElement> {
+  items: MenuItem[]
+  activeItem?: string
+  onItemClick?: (label: string) => void
+}
+
 const itemVariants = {
   initial: { rotateX: 0, opacity: 1 },
   hover: { rotateX: -90, opacity: 0 },
@@ -54,134 +60,129 @@ const sharedTransition = {
   duration: 0.5,
 }
 
-export const MenuBar = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & {
-    items: MenuItem[]
-    activeItem?: string
-    onItemClick?: (label: string) => void
-  }
->(({ className, items, activeItem, onItemClick, ...props }, ref) => {
-  const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = React.useState(false);
+export const MenuBar = React.forwardRef<HTMLDivElement, MenuBarProps>(
+  ({ className, items, activeItem, onItemClick, ...props }, ref) => {
+    const { resolvedTheme } = useTheme()
+    const [mounted, setMounted] = React.useState(false);
 
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+    React.useEffect(() => {
+      setMounted(true);
+    }, []);
 
-  const isDarkTheme = resolvedTheme === "dark"
+    const isDarkTheme = resolvedTheme === "dark"
 
-  return (
-    <motion.nav
-      ref={ref}
-      className={cn(
-        "p-1 relative",
-        className
-      )}
-      initial="initial"
-      whileHover="hover"
-      {...props}
-    >
-      {mounted && (
-      <motion.div
+    return (
+      <motion.nav
+        ref={ref}
         className={cn(
-          "absolute -inset-2 bg-gradient-radial from-transparent to-transparent rounded-3xl z-0 pointer-events-none",
-          isDarkTheme
-            ? "via-blue-400/30 via-30% via-purple-400/30 via-60% via-red-400/30 via-90%"
-            : "via-blue-400/20 via-30% via-purple-400/20 via-60% via-red-400/20 via-90%"
+          "p-1 relative",
+          className
         )}
-        variants={navGlowVariants}
-        style={{ opacity: mounted ? 1 : 0 }}
-      />
-      )}
-      <ul className="flex items-center gap-1 relative z-10">
-        {items.map((item) => {
-          const Icon = item.icon
-          const isActive = item.label === activeItem
+        initial="initial"
+        whileHover="hover"
+        {...props}
+      >
+        {mounted && (
+        <motion.div
+          className={cn(
+            "absolute -inset-2 bg-gradient-radial from-transparent to-transparent rounded-3xl z-0 pointer-events-none",
+            isDarkTheme
+              ? "via-blue-400/30 via-30% via-purple-400/30 via-60% via-red-400/30 via-90%"
+              : "via-blue-400/20 via-30% via-purple-400/20 via-60% via-red-400/20 via-90%"
+          )}
+          variants={navGlowVariants}
+          style={{ opacity: mounted ? 1 : 0 }}
+        />
+        )}
+        <ul className="flex items-center gap-1 relative z-10">
+          {items.map((item) => {
+            const Icon = item.icon
+            const isActive = item.label === activeItem
 
-          return (
-            <motion.li key={item.label} className="relative">
-              <a href={item.href} className="block w-full">
-                <motion.div
-                  className="block rounded-xl overflow-visible group relative"
-                  style={{ perspective: "600px" }}
-                  whileHover="hover"
-                  initial="initial"
-                  onMouseEnter={() => onItemClick?.(item.label)}
-                >
+            return (
+              <motion.li key={item.label} className="relative">
+                <a href={item.href} className="block w-full">
                   <motion.div
-                    className="absolute inset-0 z-0 pointer-events-none"
-                    variants={glowVariants}
-                    animate={isActive ? "hover" : "initial"}
-                    style={{
-                      background: item.gradient,
-                      opacity: isActive ? 1 : 0,
-                      borderRadius: "16px",
-                    }}
-                  />
-                  <motion.div
-                    className={cn(
-                      "flex items-center gap-2 px-3 py-1.5 relative z-10 bg-transparent transition-colors rounded-xl text-sm",
-                      isActive
-                        ? "text-foreground"
-                        : "text-muted-foreground group-hover:text-foreground"
-                    )}
-                    variants={itemVariants}
-                    transition={sharedTransition}
-                    style={{
-                      transformStyle: "preserve-3d",
-                      transformOrigin: "center bottom",
-                    }}
+                    className="block rounded-xl overflow-visible group relative"
+                    style={{ perspective: "600px" }}
+                    whileHover="hover"
+                    initial="initial"
+                    onMouseEnter={() => onItemClick?.(item.label)}
                   >
-                    {Icon && (
-                      <span
-                        className={cn(
-                          "transition-colors duration-300",
-                          isActive ? item.iconColor : "text-foreground",
-                          `group-hover:${item.iconColor}`
-                        )}
-                      >
-                        <Icon className="h-4 w-4" />
-                      </span>
-                    )}
-                    <span>{item.label}</span>
+                    <motion.div
+                      className="absolute inset-0 z-0 pointer-events-none"
+                      variants={glowVariants}
+                      animate={isActive ? "hover" : "initial"}
+                      style={{
+                        background: item.gradient,
+                        opacity: isActive ? 1 : 0,
+                        borderRadius: "16px",
+                      }}
+                    />
+                    <motion.div
+                      className={cn(
+                        "flex items-center gap-2 px-3 py-1.5 relative z-10 bg-transparent transition-colors rounded-xl text-sm",
+                        isActive
+                          ? "text-foreground"
+                          : "text-muted-foreground group-hover:text-foreground"
+                      )}
+                      variants={itemVariants}
+                      transition={sharedTransition}
+                      style={{
+                        transformStyle: "preserve-3d",
+                        transformOrigin: "center bottom",
+                      }}
+                    >
+                      {Icon && (
+                        <span
+                          className={cn(
+                            "transition-colors duration-300",
+                            isActive ? item.iconColor : "text-foreground",
+                            `group-hover:${item.iconColor}`
+                          )}
+                        >
+                          <Icon className="h-4 w-4" />
+                        </span>
+                      )}
+                      <span>{item.label}</span>
+                    </motion.div>
+                    <motion.div
+                      className={cn(
+                        "flex items-center gap-2 px-3 py-1.5 absolute inset-0 z-10 bg-transparent transition-colors rounded-xl text-sm",
+                        isActive
+                          ? "text-foreground"
+                          : "text-muted-foreground group-hover:text-foreground"
+                      )}
+                      variants={backVariants}
+                      transition={sharedTransition}
+                      style={{
+                        transformStyle: "preserve-3d",
+                        transformOrigin: "center top",
+                        rotateX: 90,
+                      }}
+                    >
+                      {Icon && (
+                        <span
+                          className={cn(
+                            "transition-colors duration-300",
+                            isActive ? item.iconColor : "text-foreground",
+                            `group-hover:${item.iconColor}`
+                          )}
+                        >
+                          <Icon className="h-4 w-4" />
+                        </span>
+                      )}
+                      <span>{item.label}</span>
+                    </motion.div>
                   </motion.div>
-                  <motion.div
-                    className={cn(
-                      "flex items-center gap-2 px-3 py-1.5 absolute inset-0 z-10 bg-transparent transition-colors rounded-xl text-sm",
-                      isActive
-                        ? "text-foreground"
-                        : "text-muted-foreground group-hover:text-foreground"
-                    )}
-                    variants={backVariants}
-                    transition={sharedTransition}
-                    style={{
-                      transformStyle: "preserve-3d",
-                      transformOrigin: "center top",
-                      rotateX: 90,
-                    }}
-                  >
-                    {Icon && (
-                      <span
-                        className={cn(
-                          "transition-colors duration-300",
-                          isActive ? item.iconColor : "text-foreground",
-                          `group-hover:${item.iconColor}`
-                        )}
-                      >
-                        <Icon className="h-4 w-4" />
-                      </span>
-                    )}
-                    <span>{item.label}</span>
-                  </motion.div>
-                </motion.div>
-              </a>
-            </motion.li>
-          )
-        })}
-      </ul>
-    </motion.nav>
-  )
-})
+                </a>
+              </motion.li>
+            )
+          })}
+        </ul>
+      </motion.nav>
+    )
+  },
+)
 
 MenuBar.displayName = "MenuBar"

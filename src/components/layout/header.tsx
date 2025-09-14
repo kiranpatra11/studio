@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { StalliqLogo } from '@/components/icons/stalliq-logo';
-import { Button } from '@/components/ui/button';
 import { MenuBar } from '@/components/ui/glow-menu';
 import { useState } from 'react';
 import { LayoutGrid, DollarSign, HelpCircle, Mail } from 'lucide-react';
