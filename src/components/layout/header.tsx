@@ -3,18 +3,47 @@
 import Link from 'next/link';
 import { StalliqLogo } from '@/components/icons/stalliq-logo';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import { usePathname } from 'next/navigation';
+import { MenuBar } from '@/components/ui/glow-menu';
+import { useState } from 'react';
+import { LayoutGrid, DollarSign, HelpCircle, Mail } from 'lucide-react';
+
+const menuItems = [
+  {
+    icon: LayoutGrid,
+    label: 'Features',
+    href: '#features',
+    gradient:
+      'radial-gradient(circle, hsl(var(--primary-foreground)/0.15) 0%, hsl(var(--primary-foreground)/0.06) 50%, transparent 100%)',
+    iconColor: 'text-primary',
+  },
+  {
+    icon: DollarSign,
+    label: 'Pricing',
+    href: '#pricing',
+    gradient:
+      'radial-gradient(circle, hsl(var(--accent-magenta)/0.15) 0%, hsl(var(--accent-magenta)/0.06) 50%, transparent 100%)',
+    iconColor: 'text-accent-magenta',
+  },
+  {
+    icon: HelpCircle,
+    label: 'FAQ',
+    href: '#faq',
+    gradient:
+      'radial-gradient(circle, hsl(var(--accent-purple)/0.15) 0%, hsl(var(--accent-purple)/0.06) 50%, transparent 100%)',
+    iconColor: 'text-accent-purple',
+  },
+  {
+    icon: Mail,
+    label: 'Contact',
+    href: '#contact',
+    gradient:
+      'radial-gradient(circle, hsl(var(--accent)/0.15) 0%, hsl(var(--accent)/0.06) 50%, transparent 100%)',
+    iconColor: 'text-accent',
+  },
+];
 
 export default function Header() {
-  const pathname = usePathname();
-
-  const navItems = [
-    { href: '#features', label: 'Features' },
-    { href: '#pricing', label: 'Pricing' },
-    { href: '#faq', label: 'FAQ' },
-    { href: '#contact', label: 'Contact' },
-  ];
+  const [activeItem, setActiveItem] = useState<string>('');
 
   return (
     <header className="absolute top-0 z-50 w-full">
@@ -22,22 +51,9 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-2" aria-label="Stalliq Home">
           <StalliqLogo className="h-8 w-auto" />
         </Link>
-        <nav className="hidden items-center gap-6 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className={cn(
-                'text-sm font-medium transition-colors',
-                pathname === item.href
-                  ? 'text-primary'
-                  : 'text-muted-foreground hover:text-primary'
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="hidden md:flex">
+          <MenuBar items={menuItems} activeItem={activeItem} onItemClick={setActiveItem} />
+        </div>
         <div className="flex items-center gap-4">
           <Button asChild className="animate-pulse-glow">
             <Link href="#waitlist-form">Join Waitlist</Link>
