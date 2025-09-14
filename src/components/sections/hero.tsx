@@ -1,10 +1,14 @@
+'use client';
+
 import WaitlistForm from '@/components/waitlist-form';
+import { useEffect, useState } from 'react';
 
 export default function Hero() {
+
   return (
     <section className="relative flex min-h-dvh items-center justify-center overflow-hidden bg-black py-24 text-center">
       <div className="absolute inset-0 -z-20">
-        <div className="h-full w-full bg-gradient-to-br from-accent-purple/20 via-primary/20 to-accent-magenta/20" />
+        <div className="h-full w-full bg-black" />
       </div>
       <div className="absolute inset-0 -z-10 bg-gradient-radial-hero" />
 
