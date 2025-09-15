@@ -44,7 +44,7 @@ const faqs = [
 
 export default function Faq() {
   return (
-    <section className="bg-black py-16 md:py-24">
+    <section id="faq" className="bg-black py-16 md:py-24">
       <div className="container mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 md:grid-cols-3 md:px-6">
         <div className="col-span-1">
           <div className="sticky top-24">
