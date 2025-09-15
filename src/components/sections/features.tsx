@@ -48,7 +48,7 @@ const featuresList: Feature[] = [
 export default function Features() {
   return (
     <section id="features" className="w-full bg-black py-16 md:py-20 lg:py-24">
-      <div className="container px-4">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="bg-gradient-to-r from-teal-400 to-purple-500 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl">
             Features that make Stalliq different
