@@ -9,7 +9,7 @@ import { RainbowBorderButton } from '../ui/rainbow-border-button';
 
 export default function Hero() {
   return (
-    <div className="fixed inset-0 z-0 h-screen w-screen">
+    <div className="relative h-screen w-screen">
       <Card className="relative h-full w-full overflow-hidden rounded-none border-none bg-black">
         <div className="absolute inset-0 z-0">
           <Spotlight

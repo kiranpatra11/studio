@@ -6,10 +6,12 @@ import Features from '@/components/sections/features';
 
 export default function Home() {
   return (
-    <div className="flex min-h-dvh flex-col bg-black">
+    <div className="relative min-h-dvh bg-black">
       <Header />
       <main>
-        <Hero />
+        <div className="h-screen">
+          <Hero />
+        </div>
         <Features />
       </main>
     </div>
