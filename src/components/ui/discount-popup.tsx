@@ -53,7 +53,7 @@ export function DiscountPopup() {
                 className="w-full sm:w-auto"
             />
           <Button variant="ghost" onClick={() => setIsOpen(false)} className="w-full sm:w-auto text-neutral-400 hover:text-white">
-            No, thanks
+            I'll Regret This
           </Button>
         </AlertDialogFooter>
       </AlertDialogContent>
