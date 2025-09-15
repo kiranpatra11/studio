@@ -18,7 +18,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="mt-auto border-t border-white/10 bg-black">
+    <footer id="contact" className="mt-auto border-t border-white/10 bg-black">
       <div className="container mx-auto px-4 py-12 md:px-6 md:py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
           <div className="flex flex-col items-start gap-4">

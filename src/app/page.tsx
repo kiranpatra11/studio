@@ -3,6 +3,8 @@
 import Header from '@/components/layout/header';
 import Hero from '@/components/sections/hero';
 import Features from '@/components/sections/features';
+import Faq from '@/components/sections/faq';
+import Footer from '@/components/layout/footer';
 import { DiscountPopup } from '@/components/ui/discount-popup';
 
 export default function Home() {
@@ -15,7 +17,9 @@ export default function Home() {
           <Hero />
         </div>
         <Features />
+        <Faq />
       </main>
+      <Footer />
     </div>
   );
 }
