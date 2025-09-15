@@ -1,78 +1,92 @@
-import { FeatureIcon } from '@/components/icons/feature-icon';
-import { ScrollReveal } from '@/components/ui/scroll-reveal';
+import {
+  Inbox,
+  Bot,
+  ChevronsRight,
+  User,
+  BarChart,
+  DollarSign,
+  type LucideIcon,
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
-const features = [
+interface Feature {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+const features: Feature[] = [
   {
-    icon: {
-      shape: 'hexagon',
-      gradientId: 'grad1',
-    },
-    title: 'Generate Ideas Instantly',
-    description: 'Leverage our advanced AI to brainstorm and generate unique concepts in seconds.',
-    gradientColors: {
-      start: 'hsl(var(--primary))',
-      end: 'hsl(var(--accent-magenta))',
-    },
+    icon: Inbox,
+    title: 'Omnichannel Inbox',
+    description: 'Manage email, chat, social, and calls in one place.',
   },
   {
-    icon: {
-      shape: 'circle',
-      gradientId: 'grad2',
-    },
-    title: 'Collaborate in Real-Time',
-    description: 'Work with your team seamlessly with shared canvases and synchronized workflows.',
-     gradientColors: {
-      start: 'hsl(var(--accent-magenta))',
-      end: 'hsl(var(--accent-purple))',
-    },
+    icon: Bot,
+    title: 'AI Auto-Responder',
+    description: 'Let AI instantly answer FAQs and reduce response times.',
   },
   {
-    icon: {
-      shape: 'square',
-      gradientId: 'grad3',
-    },
-    title: 'Deploy with a Click',
-    description: 'Go from prototype to production effortlessly with our integrated deployment pipeline.',
-    gradientColors: {
-      start: 'hsl(var(--accent-purple))',
-      end: 'hsl(var(--accent))',
-    },
+    icon: ChevronsRight,
+    title: 'One-Click Migration',
+    description: 'Switch from Zendesk, Freshdesk, or Zoho in minutes.',
+  },
+  {
+    icon: User,
+    title: 'CRM Lite',
+    description: 'See customer profiles, history, and sentiment at a glance.',
+  },
+  {
+    icon: BarChart,
+    title: 'Analytics Dashboard',
+    description: 'Track performance with clear, real-time metrics.',
+  },
+  {
+    icon: DollarSign,
+    title: 'Affordable Pricing',
+    description: 'Simple, transparent plans designed for startups.',
   },
 ];
 
 export default function Features() {
   return (
-    <section className="relative py-16 md:py-24">
-      <div className="absolute inset-0 -z-10 bg-gradient-radial-features opacity-50" />
-      <div className="container mx-auto px-4 md:px-6">
-        <ScrollReveal className="mx-auto mb-12 max-w-3xl text-center">
-          <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-            The Future of Creation, Unified.
+    <section className="relative bg-black py-16 md:py-20 px-8">
+      <div className="container mx-auto">
+        <div className="mx-auto mb-12 max-w-3xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-primary to-accent-purple bg-clip-text text-transparent">
+            Features that make Stalliq different
           </h2>
-          <p className="mt-4 text-muted-foreground md:text-lg">
-            Stalliq combines cutting-edge technology with intuitive design to
-            supercharge your creative process.
+          <p className="mt-4 max-w-[600px] mx-auto text-base text-gray-300">
+            Built for speed, simplicity, and powerful automation.
           </p>
-        </ScrollReveal>
-        <div className="grid gap-8 md:grid-cols-3">
+        </div>
+
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => (
-            <ScrollReveal
-              key={feature.title}
-              className="flex flex-col items-center gap-4 rounded-lg border border-white/10 bg-black/20 p-6 text-center shadow-lg backdrop-blur-sm"
-              delay={index * 150}
+            <div
+              key={index}
+              className="group relative transform rounded-2xl bg-gradient-to-b from-[#181818] to-[#111111] p-6 text-center shadow-lg transition-transform duration-300 hover:-translate-y-1"
             >
-              <FeatureIcon
-                shape={feature.icon.shape as any}
-                gradientId={feature.icon.gradientId}
-                gradientColors={feature.gradientColors}
-                className="h-16 w-16"
-              />
-              <h3 className="font-headline text-xl font-bold">
-                {feature.title}
-              </h3>
-              <p className="text-muted-foreground">{feature.description}</p>
-            </ScrollReveal>
+              <div className="absolute inset-0 rounded-2xl border border-transparent opacity-0 transition-opacity duration-300 group-hover:border-primary/30 group-hover:opacity-100"></div>
+              <div className="relative">
+                <div className="mb-4 inline-block rounded-lg bg-primary/10 p-3">
+                  <feature.icon className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-lg font-bold text-white">{feature.title}</h3>
+                <p className="mt-2 text-sm text-gray-400 h-12">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
           ))}
+        </div>
+
+        <div className="mt-16 text-center">
+            <a href="#waitlist-form">
+              <Button size="lg" className="bg-primary hover:bg-primary/90">
+                Join the Waitlist
+              </Button>
+            </a>
         </div>
       </div>
     </section>
