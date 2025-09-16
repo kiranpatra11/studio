@@ -42,8 +42,6 @@ const earlyAccessFormSchema = z.object({
 
 export async function submitEarlyAccessForm(prevState: any, formData: FormData) {
     const validatedFields = earlyAccessFormSchema.safeParse({
-        'entry.12345': formData.get('firstName'), // Replace with your Google Form entry ID
-        'entry.67890': formData.get('lastName'),  // Replace with your Google Form entry ID
         firstName: formData.get('firstName'),
         lastName: formData.get('lastName'),
         country: formData.get('country'),
@@ -63,23 +61,21 @@ export async function submitEarlyAccessForm(prevState: any, formData: FormData) 
     // get the form's 'action' URL and the 'name' for each input field.
     // Replace the URL and entry IDs below.
     try {
-        /* 
-        const googleFormUrl = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
+        const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSe-P5YjD-e1J-9XyVfJdZg6w-8bYcK3aA5eR1x-4B5fF6-9wQ/formResponse';
         
         const googleFormData = new FormData();
-        googleFormData.append('entry.XXXXXXX', validatedFields.data.firstName);
-        googleFormData.append('entry.YYYYYYY', validatedFields.data.lastName);
-        googleFormData.append('entry.ZZZZZZZ', validatedFields.data.country);
-        googleFormData.append('entry.AAAAAAA', validatedFields.data.phone);
-        googleFormData.append('entry.BBBBBBB', validatedFields.data.website);
-        googleFormData.append('entry.CCCCCCC', validatedFields.data.revenue);
+        googleFormData.append('entry.1294413284', validatedFields.data.firstName);
+        googleFormData.append('entry.1882414759', validatedFields.data.lastName);
+        googleFormData.append('entry.68962634', validatedFields.data.country);
+        googleFormData.append('entry.169123894', validatedFields.data.phone);
+        googleFormData.append('entry.1388569564', validatedFields.data.website);
+        googleFormData.append('entry.1011831818', validatedFields.data.revenue);
 
         await fetch(googleFormUrl, {
             method: 'POST',
             body: googleFormData,
             mode: 'no-cors', 
         });
-        */
         
         console.log('New Early Access Submission:', validatedFields.data);
 
