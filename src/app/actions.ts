@@ -42,6 +42,8 @@ const earlyAccessFormSchema = z.object({
 
 export async function submitEarlyAccessForm(prevState: any, formData: FormData) {
     const validatedFields = earlyAccessFormSchema.safeParse({
+        'entry.12345': formData.get('firstName'), // Replace with your Google Form entry ID
+        'entry.67890': formData.get('lastName'),  // Replace with your Google Form entry ID
         firstName: formData.get('firstName'),
         lastName: formData.get('lastName'),
         country: formData.get('country'),
@@ -56,16 +58,43 @@ export async function submitEarlyAccessForm(prevState: any, formData: FormData) 
         message: null,
         };
     }
+    
+    // To submit to Google Sheets, create a Google Form with matching fields,
+    // get the form's 'action' URL and the 'name' for each input field.
+    // Replace the URL and entry IDs below.
+    try {
+        /* 
+        const googleFormUrl = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
+        
+        const googleFormData = new FormData();
+        googleFormData.append('entry.XXXXXXX', validatedFields.data.firstName);
+        googleFormData.append('entry.YYYYYYY', validatedFields.data.lastName);
+        googleFormData.append('entry.ZZZZZZZ', validatedFields.data.country);
+        googleFormData.append('entry.AAAAAAA', validatedFields.data.phone);
+        googleFormData.append('entry.BBBBBBB', validatedFields.data.website);
+        googleFormData.append('entry.CCCCCCC', validatedFields.data.revenue);
 
-    console.log('New Early Access Submission:', validatedFields.data);
+        await fetch(googleFormUrl, {
+            method: 'POST',
+            body: googleFormData,
+            mode: 'no-cors', 
+        });
+        */
+        
+        console.log('New Early Access Submission:', validatedFields.data);
 
-    // Here you would typically save the data to your database, e.g., Supabase/Postgres
-    // await db.early_access_users.create({ data: validatedFields.data });
+        await new Promise(resolve => setTimeout(resolve, 1000));
 
-    await new Promise(resolve => setTimeout(resolve, 1000));
+        return {
+            errors: null,
+            message: 'Your request has been submitted. Our team will contact you soon.',
+        };
 
-    return {
-        errors: null,
-        message: 'Your request has been submitted. Our team will contact you soon.',
-    };
+    } catch (error) {
+        console.error('Error submitting to Google Form:', error);
+        return {
+            errors: { _form: ['An unexpected error occurred.'] },
+            message: null,
+        };
+    }
 }

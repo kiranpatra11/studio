@@ -105,12 +105,14 @@ export function EarlyAccessForm() {
       setOpen(false);
       form.reset();
     } else if (state.errors) {
-        // You can optionally show a general error toast
-        // toast({
-        //     variant: 'destructive',
-        //     title: 'Oops!',
-        //     description: 'Please check the form for errors.',
-        // });
+        const formErrors = state.errors as any;
+        if (formErrors._form) {
+            toast({
+                variant: 'destructive',
+                title: 'Oops! An error occurred.',
+                description: formErrors._form.join(', '),
+            });
+        }
     }
   }, [state, toast, form]);
   
@@ -118,7 +120,7 @@ export function EarlyAccessForm() {
   useEffect(() => {
     if (state.errors) {
       for (const [field, messages] of Object.entries(state.errors)) {
-        if (messages) {
+        if (messages && field !== '_form') {
           form.setError(field as keyof z.infer<typeof formSchema>, {
             type: 'manual',
             message: messages.join(', '),
@@ -207,11 +209,12 @@ export function EarlyAccessForm() {
                                 <CommandGroup>
                                 {countries.map((country) => (
                                     <CommandItem
-                                    value={country.label}
-                                    key={country.value}
-                                    onSelect={() => {
-                                        form.setValue("country", country.value)
-                                    }}
+                                        value={country.label}
+                                        key={country.value}
+                                        onSelect={() => {
+                                            form.setValue("country", country.value)
+                                        }}
+                                        className="data-[selected=true]:bg-zinc-700 data-[selected=true]:text-white"
                                     >
                                     <Check
                                         className={cn(
@@ -273,7 +276,11 @@ export function EarlyAccessForm() {
                     </FormControl>
                     <SelectContent>
                       {revenueOptions.map((option) => (
-                        <SelectItem key={option} value={option}>
+                        <SelectItem 
+                            key={option} 
+                            value={option}
+                            className="data-[highlighted]:bg-zinc-700 data-[highlighted]:text-white"
+                        >
                           {option}
                         </SelectItem>
                       ))}
