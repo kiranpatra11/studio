@@ -5,7 +5,7 @@ import { SplineScene } from '@/components/ui/splite';
 import { Card } from '@/components/ui/card';
 import { Spotlight } from '@/components/ui/spotlight';
 import { RainbowButton } from '../ui/rainbow-button';
-import { RainbowBorderButton } from '../ui/rainbow-border-button';
+import { EarlyAccessForm } from '../ui/early-access-form';
 
 export default function Hero() {
   return (
@@ -29,10 +29,7 @@ export default function Hero() {
               Our AI-powered solution resolves 80% of queries automatically, saving you time and money while delighting your customers.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center gap-4">
-              <RainbowBorderButton
-                label="Get Early Access - FREE"
-                className="w-full sm:w-auto"
-              />
+              <EarlyAccessForm />
               <RainbowButton
                 className="w-full sm:w-auto"
               >
