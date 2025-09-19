@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useActionState, useEffect, useMemo } from 'react';
@@ -83,7 +84,7 @@ export function EarlyAccessForm() {
   });
 
   const stateMessage = state.message;
-  const stateErrors = useMemo(() => state.errors, [state.errors]);
+  const stateErrors = useMemo(() => state.errors, [state]);
 
   useEffect(() => {
     if (stateMessage) {
@@ -103,7 +104,7 @@ export function EarlyAccessForm() {
             });
         }
     }
-  }, [stateMessage, stateErrors, toast, form.reset]);
+  }, [stateMessage, stateErrors, toast, form]);
   
   useEffect(() => {
     if (stateErrors) {
@@ -116,7 +117,7 @@ export function EarlyAccessForm() {
         }
       }
     }
-  }, [stateErrors, form.setError]);
+  }, [stateErrors, form]);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -140,7 +141,7 @@ export function EarlyAccessForm() {
                 control={form.control}
                 name="firstName"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem key="firstName">
                     <FormLabel>First Name</FormLabel>
                     <FormControl>
                       <Input placeholder="John" {...field} />
@@ -153,7 +154,7 @@ export function EarlyAccessForm() {
                 control={form.control}
                 name="lastName"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem key="lastName">
                     <FormLabel>Last Name</FormLabel>
                     <FormControl>
                       <Input placeholder="Doe" {...field} />
@@ -179,7 +180,7 @@ export function EarlyAccessForm() {
                       {countries.map((country) => (
                         <SelectItem 
                             key={country.value} 
-                            value={country.label} // Use label for submission
+                            value={country.label}
                             className="data-[highlighted]:bg-zinc-700 data-[highlighted]:text-white"
                         >
                           {country.label}
@@ -223,7 +224,8 @@ export function EarlyAccessForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Current Annual Revenue</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value} name="revenue">
+                  <Select onValuecha
+nge={field.onChange} defaultValue={field.value} name="revenue">
                     <FormControl>
                       <SelectTrigger>
                         <SelectValue placeholder="Select a revenue range" />
@@ -259,3 +261,5 @@ export function EarlyAccessForm() {
     </Dialog>
   );
 }
+
+    
