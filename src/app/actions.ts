@@ -61,15 +61,15 @@ export async function submitEarlyAccessForm(prevState: any, formData: FormData) 
     // get the form's 'action' URL and the 'name' for each input field.
     // Replace the URL and entry IDs below.
     try {
-        const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSe-P5YjD-e1J-9XyVfJdZg6w-8bYcK3aA5eR1x-4B5fF6-9wQ/formResponse';
+        const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSeg6rmSs7jS1p5zgtz6x4RkdtTTIbvnIEomvUO1j48Y8kQAxw/formResponse';
         
         const googleFormData = new FormData();
-        googleFormData.append('entry.1294413284', validatedFields.data.firstName);
-        googleFormData.append('entry.1882414759', validatedFields.data.lastName);
-        googleFormData.append('entry.68962634', validatedFields.data.country);
-        googleFormData.append('entry.169123894', validatedFields.data.phone);
-        googleFormData.append('entry.1388569564', validatedFields.data.website);
-        googleFormData.append('entry.1011831818', validatedFields.data.revenue);
+        googleFormData.append('entry.9805284', validatedFields.data.firstName);
+        googleFormData.append('entry.1485660370', validatedFields.data.lastName);
+        googleFormData.append('entry.1013702118', validatedFields.data.country);
+        googleFormData.append('entry.953798938', validatedFields.data.phone);
+        googleFormData.append('entry.2023533965', validatedFields.data.website);
+        googleFormData.append('entry.1147012391', validatedFields.data.revenue);
 
         await fetch(googleFormUrl, {
             method: 'POST',
