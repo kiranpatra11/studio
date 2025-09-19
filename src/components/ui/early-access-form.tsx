@@ -138,10 +138,11 @@ export function EarlyAccessForm() {
           <form action={formAction} className="space-y-4">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <FormField
+                key="firstName"
                 control={form.control}
                 name="firstName"
                 render={({ field }) => (
-                  <FormItem key="firstName">
+                  <FormItem>
                     <FormLabel>First Name</FormLabel>
                     <FormControl>
                       <Input placeholder="John" {...field} />
@@ -151,10 +152,11 @@ export function EarlyAccessForm() {
                 )}
               />
               <FormField
+                key="lastName"
                 control={form.control}
                 name="lastName"
                 render={({ field }) => (
-                  <FormItem key="lastName">
+                  <FormItem>
                     <FormLabel>Last Name</FormLabel>
                     <FormControl>
                       <Input placeholder="Doe" {...field} />
@@ -224,8 +226,7 @@ export function EarlyAccessForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Current Annual Revenue</FormLabel>
-                  <Select onValuecha
-nge={field.onChange} defaultValue={field.value} name="revenue">
+                  <Select onValueChange={field.onChange} defaultValue={field.value} name="revenue">
                     <FormControl>
                       <SelectTrigger>
                         <SelectValue placeholder="Select a revenue range" />
@@ -261,5 +262,3 @@ nge={field.onChange} defaultValue={field.value} name="revenue">
     </Dialog>
   );
 }
-
-    
