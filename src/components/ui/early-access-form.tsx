@@ -114,7 +114,7 @@ export function EarlyAccessForm() {
             });
         }
     }
-  }, [state, toast, form]);
+  }, [state, toast]);
   
   // Set form errors from server action
   useEffect(() => {
@@ -123,7 +123,7 @@ export function EarlyAccessForm() {
         if (messages && field !== '_form') {
           form.setError(field as keyof z.infer<typeof formSchema>, {
             type: 'manual',
-            message: messages.join(', '),
+            message: (messages as string[]).join(', '),
           });
         }
       }
@@ -214,7 +214,7 @@ export function EarlyAccessForm() {
                                         onSelect={() => {
                                             form.setValue("country", country.value)
                                         }}
-                                        className="data-[selected=true]:bg-zinc-700 data-[selected=true]:text-white"
+                                        className="data-[highlighted]:bg-zinc-700 data-[highlighted]:text-white"
                                     >
                                     <Check
                                         className={cn(
