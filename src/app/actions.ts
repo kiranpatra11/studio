@@ -67,12 +67,12 @@ export async function submitEarlyAccessForm(prevState: any, formData: FormData) 
         const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSeg6rmSs7jS1p5zgtz6x4RkdtTTIbvnIEomvUO1j48Y8kQAxw/formResponse';
         
         const googleFormData = new FormData();
-        googleFormData.append('entry.9805284', validatedFields.data.firstName);
-        googleFormData.append('entry.1485660370', validatedFields.data.lastName);
-        googleFormData.append('entry.1013702118', validatedFields.data.country);
-        googleFormData.append('entry.953798938', validatedFields.data.phone);
-        googleFormData.append('entry.2023533965', validatedFields.data.website);
-        googleFormData.append('entry.1147012391', validatedFields.data.revenue);
+        googleFormData.append('entry.1485660370', validatedFields.data.firstName);
+        googleFormData.append('entry.2078496175', validatedFields.data.lastName);
+        googleFormData.append('entry.911377833', validatedFields.data.country);
+        googleFormData.append('entry.766874559', validatedFields.data.phone);
+        googleFormData.append('entry.1887746020', validatedFields.data.website);
+        googleFormData.append('entry.1962243414', validatedFields.data.revenue);
 
         await fetch(googleFormUrl, {
             method: 'POST',
