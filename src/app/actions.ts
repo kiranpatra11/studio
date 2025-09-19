@@ -41,6 +41,11 @@ const earlyAccessFormSchema = z.object({
 
 
 export async function submitEarlyAccessForm(prevState: any, formData: FormData) {
+    const websiteValue = (formData.get('website') as string) || '';
+    if (websiteValue && !websiteValue.startsWith('http')) {
+        formData.set('website', `https://` + websiteValue);
+    }
+
     const validatedFields = earlyAccessFormSchema.safeParse({
         firstName: formData.get('firstName'),
         lastName: formData.get('lastName'),
@@ -57,9 +62,6 @@ export async function submitEarlyAccessForm(prevState: any, formData: FormData) 
         };
     }
     
-    // To submit to Google Sheets, create a Google Form with matching fields,
-    // get the form's 'action' URL and the 'name' for each input field.
-    // Replace the URL and entry IDs below.
     try {
         const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSeg6rmSs7jS1p5zgtz6x4RkdtTTIbvnIEomvUO1j48Y8kQAxw/formResponse';
         

@@ -1,11 +1,10 @@
 "use client";
 
-import { useState, useActionState, useEffect } from 'react';
+import { useState, useActionState, useEffect, useMemo } from 'react';
 import { useFormStatus } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Check, ChevronsUpDown } from 'lucide-react';
 import { submitEarlyAccessForm } from '@/app/actions';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
@@ -38,19 +37,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@/components/ui/popover"
-import {
-    Command,
-    CommandEmpty,
-    CommandGroup,
-    CommandInput,
-    CommandItem,
-    CommandList,
-} from "@/components/ui/command"
 import { RainbowBorderButton } from './rainbow-border-button';
 
 const revenueOptions = [
@@ -96,16 +82,19 @@ export function EarlyAccessForm() {
     },
   });
 
+  const stateMessage = state.message;
+  const stateErrors = useMemo(() => state.errors, [state.errors]);
+
   useEffect(() => {
-    if (state.message) {
+    if (stateMessage) {
       toast({
         title: 'Success!',
-        description: state.message,
+        description: stateMessage,
       });
       setOpen(false);
       form.reset();
-    } else if (state.errors) {
-        const formErrors = state.errors as any;
+    } else if (stateErrors) {
+        const formErrors = stateErrors as any;
         if (formErrors._form) {
             toast({
                 variant: 'destructive',
@@ -114,13 +103,11 @@ export function EarlyAccessForm() {
             });
         }
     }
-  }, [state.message, state.errors, toast, form.reset]);
+  }, [stateMessage, stateErrors, toast, form.reset]);
   
-  // Set form errors from server action
   useEffect(() => {
-    const formErrors = state.errors;
-    if (formErrors) {
-      for (const [field, messages] of Object.entries(formErrors)) {
+    if (stateErrors) {
+      for (const [field, messages] of Object.entries(stateErrors)) {
         if (messages && field !== '_form') {
           form.setError(field as keyof z.infer<typeof formSchema>, {
             type: 'manual',
@@ -129,7 +116,7 @@ export function EarlyAccessForm() {
         }
       }
     }
-  }, [state.errors, form.setError]);
+  }, [stateErrors, form.setError]);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -177,67 +164,32 @@ export function EarlyAccessForm() {
               />
             </div>
             <FormField
-                control={form.control}
-                name="country"
-                render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                    <FormLabel>Country</FormLabel>
-                    <Popover>
-                        <PopoverTrigger asChild>
-                        <FormControl>
-                            <Button
-                            variant="outline"
-                            role="combobox"
-                            className={cn(
-                                "w-full justify-between",
-                                !field.value && "text-muted-foreground"
-                            )}
-                            {...field}
-                            name="country"
-                            >
-                            {field.value
-                                ? countries.find(
-                                    (country) => country.value === field.value
-                                )?.label
-                                : "Select country"}
-                            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                            </Button>
-                        </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-[--radix-popover-trigger-width] max-h-[--radix-popover-content-available-height] p-0">
-                        <Command>
-                            <CommandInput placeholder="Search country..." />
-                            <CommandList>
-                                <CommandEmpty>No country found.</CommandEmpty>
-                                <CommandGroup>
-                                {countries.map((country) => (
-                                    <CommandItem
-                                        value={country.label}
-                                        key={country.value}
-                                        onSelect={() => {
-                                            form.setValue("country", country.value)
-                                        }}
-                                        className="data-[highlighted]:bg-zinc-700 data-[highlighted]:text-white"
-                                    >
-                                    <Check
-                                        className={cn(
-                                        "mr-2 h-4 w-4",
-                                        country.value === field.value
-                                            ? "opacity-100"
-                                            : "opacity-0"
-                                        )}
-                                    />
-                                    {country.label}
-                                    </CommandItem>
-                                ))}
-                                </CommandGroup>
-                            </CommandList>
-                        </Command>
-                        </PopoverContent>
-                    </Popover>
-                    <FormMessage />
-                    </FormItem>
-                )}
+              control={form.control}
+              name="country"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Country</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value} name="country">
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a country" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {countries.map((country) => (
+                        <SelectItem 
+                            key={country.value} 
+                            value={country.label} // Use label for submission
+                            className="data-[highlighted]:bg-zinc-700 data-[highlighted]:text-white"
+                        >
+                          {country.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
             <FormField
               control={form.control}
