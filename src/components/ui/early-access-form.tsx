@@ -114,12 +114,13 @@ export function EarlyAccessForm() {
             });
         }
     }
-  }, [state, toast]);
+  }, [state.message, state.errors, toast, form]);
   
   // Set form errors from server action
   useEffect(() => {
-    if (state.errors) {
-      for (const [field, messages] of Object.entries(state.errors)) {
+    const formErrors = state.errors;
+    if (formErrors) {
+      for (const [field, messages] of Object.entries(formErrors)) {
         if (messages && field !== '_form') {
           form.setError(field as keyof z.infer<typeof formSchema>, {
             type: 'manual',
