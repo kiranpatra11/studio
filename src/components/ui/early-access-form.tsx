@@ -114,7 +114,7 @@ export function EarlyAccessForm() {
             });
         }
     }
-  }, [state.message, state.errors, toast, form]);
+  }, [state.message, state.errors, toast, form.reset]);
   
   // Set form errors from server action
   useEffect(() => {
@@ -129,7 +129,7 @@ export function EarlyAccessForm() {
         }
       }
     }
-  }, [state.errors, form]);
+  }, [state.errors, form.setError]);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -192,6 +192,8 @@ export function EarlyAccessForm() {
                                 "w-full justify-between",
                                 !field.value && "text-muted-foreground"
                             )}
+                            {...field}
+                            name="country"
                             >
                             {field.value
                                 ? countries.find(
@@ -269,7 +271,7 @@ export function EarlyAccessForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Current Annual Revenue</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <Select onValueChange={field.onChange} defaultValue={field.value} name="revenue">
                     <FormControl>
                       <SelectTrigger>
                         <SelectValue placeholder="Select a revenue range" />
