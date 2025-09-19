@@ -84,7 +84,7 @@ export function EarlyAccessForm() {
   });
 
   const stateMessage = state.message;
-  const stateErrors = useMemo(() => state.errors, [state]);
+  const stateErrors = useMemo(() => state.errors, [state.errors]);
 
   useEffect(() => {
     if (stateMessage) {
@@ -167,6 +167,7 @@ export function EarlyAccessForm() {
               />
             </div>
             <FormField
+              key="country"
               control={form.control}
               name="country"
               render={({ field }) => (
@@ -195,6 +196,7 @@ export function EarlyAccessForm() {
               )}
             />
             <FormField
+              key="phone"
               control={form.control}
               name="phone"
               render={({ field }) => (
@@ -208,6 +210,7 @@ export function EarlyAccessForm() {
               )}
             />
             <FormField
+              key="website"
               control={form.control}
               name="website"
               render={({ field }) => (
@@ -221,6 +224,7 @@ export function EarlyAccessForm() {
               )}
             />
             <FormField
+              key="revenue"
               control={form.control}
               name="revenue"
               render={({ field }) => (
